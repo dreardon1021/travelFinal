@@ -1,6 +1,8 @@
 /* This is an example of using Sass, otherwise plain CSS works too*/
-$primary-background: pink;
+@import 'variables';
+@import 'mixins';
+@import 'general-elements';
+@import 'login-page';
 
-body {
-  background-color: $primary-background;
-}
+
+

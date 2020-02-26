@@ -1,0 +1,33 @@
+* {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  background-color: $primary-background;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+}
+
+nav {
+  @include flex(row, center, center);
+  width: 100%;
+  height: 5em;
+  background-color: $nav-background;
+}
+
+h1 {
+  width: fit-content;
+  height: fit-content;
+}
+
+h2 {
+  @extend h1;
+}

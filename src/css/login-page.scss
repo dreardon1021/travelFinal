@@ -1,0 +1,63 @@
+.login-page {
+  @include flex(row, space-around, center);
+  align-content: center;
+}
+
+.login-left {
+  @include flex(column, null, center);
+  width: 45%;
+  height: 20em;
+}
+
+form {
+  @include flex(column, space-around, center);
+  width: 90%;
+  height: 80%;
+  // border: 1px solid black;
+
+  div {
+    width: 90%;
+    height: fit-content;
+  }
+}
+
+input {
+  width: 80%;
+  height: 4.5em;
+  border: 1px solid $nav-background;
+  padding: .1em;
+}
+
+.main-beach {
+  height: 100%;
+  width: 45%;
+  border: 1px solid black;
+}
+
+.login-button {
+  @extend input;
+  height: 6em;
+  color: white;
+  background-color: $nav-background;
+  font-size: 1em;
+}
+
+.user-name-container {
+  @include flex(column, space-between, center);
+  width: 99%;
+  margin-bottom: 1em;
+}
+
+.password-container {
+  @extend .user-name-container;
+}
+
+label {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.3em;
+  position: relative;
+  right: 9.2em;
+  margin: .2em;
+
+}
