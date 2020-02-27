@@ -3,6 +3,7 @@
 
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
+import domUpdates from './domUpdates.js'
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -39,10 +40,35 @@ let userData;
 let tripData;
 let destinationData;
 
+let arrayOfFifty = []
+for (let i = 0; i < 50; i++) {
+  arrayOfFifty.push(`traveler${i + 1}`);
+}
+
 fetchData().then(data => {
   userData = data.userData;
-  tripData = data.ingredientsData;
-  destinationData = data.recipeData;
+  tripData = data.tripData;
+  destinationData = data.destinationData;
 })
   .catch(error => console.log(error.message))
+
+
+$('.login-button').click(loginUser)
+
+function loginUser() {
+  $('.login-form').submit(e => {
+    e.preventDefault();
+  })
+  let userInput = $('#user-name').val();
+  let passwordInput = $('#password').val();
+  if (userInput === 'agency' && passwordInput === 'travel2020') {
+    domUpdates.hide('.login-form')
+  } else if (arrayOfFifty.includes(userInput) &&
+    passwordInput === 'travel2020') {
+    domUpdates.hide('.login-form');
+    //let traveler = new traveler(userData[userInput])
+  } else {
+    $('.login-error').append(`<p>Please enter in a valid user name and login</p>`)
+  }
+}
 
