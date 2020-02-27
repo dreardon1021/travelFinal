@@ -1,7 +1,6 @@
 .login-page {
   @include flex(row, center, center);
   align-content: center;
-  display: none;
 }
 
 .login-left {
