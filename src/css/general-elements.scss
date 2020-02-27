@@ -42,3 +42,8 @@ h2 {
   @extend h1;
   font-size: 1.5em;
 }
+
+h3 {
+  @extend h2;
+}
+

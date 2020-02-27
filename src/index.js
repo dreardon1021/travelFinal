@@ -62,12 +62,11 @@ function loginUser() {
   let userInput = $('#user-name').val();
   let passwordInput = $('#password').val();
   if (userInput === 'agency' && passwordInput === 'travel2020') {
-    domUpdates.hide('.login-form')
-    // let agent = new agent()
+    domUpdates.hide('.login-form');
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
-    domUpdates.hide('.login-form');
-    //let traveler = new traveler(userData[userInput])
+    domUpdates.hide('.login-page');
+    domUpdates.displayTraveler('.traveler-dashboard')
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
   }

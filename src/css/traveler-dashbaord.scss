@@ -1,0 +1,35 @@
+.traveler-dashboard {
+  @include flex(row, space-around, center);
+  // display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.add-trip-sidebar {
+  @include flex(column, space-between, center);
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid black;
+  position: relative;
+  right: 1.2em;
+}
+
+.traveler-data-section {
+  @include flex(column, space-between, center);
+  width: 70%;
+  height: 100%;
+  margin-right: 4em;
+}
+
+.travelerFlex {
+  @include flex(row, space-around, center)
+}
+
+.traveller-data-row {
+  width: 100%;
+  height: 30%;
+  background-color: rgba(255, 255, 255, 0.5);
+  overflow-x: scroll;
+  border: 1px solid black;
+  margin-top: 1em;
+}
