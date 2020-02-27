@@ -5,7 +5,6 @@ const domUpdates = {
   hide: (target) => {
     $(target).hide()
   }
-
   
 }
 
