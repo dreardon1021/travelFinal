@@ -1,3 +1,5 @@
+import destinationData from './data/destinationData';
+
 var moment = require('moment');
 
 class User {
@@ -45,8 +47,15 @@ class User {
   //   console.log(stuff)
   // }
 
-  calculateUserSpent() {
-
+  calculateUserSpent(travelerID, tripData, destinationData) {
+    let userTrips = this.findUserPastTrips(travelerID, tripData);
+    let cost = 0;
+    userTrips.forEach(trip => {
+      let arrivalSpot = destinationData.find(destination => destination.id === trip.destinationID );
+      let costOfDestination = (arrivalSpot.estimatedLodgingCostPerDay * trip.duration) + (arrivalSpot.estimatedFlightCostPerPerson * trip.travelers);
+      cost += costOfDestination;
+    })
+    return cost
   }
 }
 

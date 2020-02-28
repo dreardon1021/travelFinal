@@ -3,6 +3,7 @@ import { expect } from 'chai';
 
 import User from '../src/user.js'
 import tripData from '../src/data/tripData.js'
+import destinationData from '../src/data/destinationData.js'
 
 
 describe('User', function() {
@@ -37,7 +38,11 @@ describe('User', function() {
     expect(user.findUserUpcomingTrips(3, tripData)).to.deep.equal([{"id": 7, "userID": 3, "destinationID": 4, "travelers": 5, "date": "2020/05/28", "duration": 20, "status": "approved", "suggestedActivities": []}])
   })
 
-  it('should be able to find current trips', function() {
-    expect(user.findCurrentTrips()).to.equal(0)
-  })
+  // it('should be able to find current trips', function() {
+  //   expect(user.findCurrentTrips()).to.equal(0)
+  // })
+
+  it('should be able to calculate user expenditures', function() {
+    expect(user.calculateUserSpent(5, tripData, destinationData)).to.equal(10450)
+  });
 });
