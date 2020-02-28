@@ -28,4 +28,16 @@ describe('User', function() {
     user.findPendingRequests(1, tripData)
     expect(user.pendingRequests).to.deep.equal([{"id": 2, "userID": 1, "destinationID": 2, "travelers": 5, "date": "2020/10/04", "duration": 18, "status": "pending", "suggestedActivities": []}])
   })
+
+  it('should be able to find previous trips for a user', function() {
+    expect(user.findUserPastTrips(3, tripData)).to.deep.equal([{"id": 1, "userID": 3, "destinationID": 1, "travelers": 1, "date": "2019/09/16", "duration": 8, "status": "approved", "suggestedActivities": []}])
+  })
+
+  it('should be able to find upcoming trips', function() {
+    expect(user.findUserUpcomingTrips(3, tripData)).to.deep.equal([{"id": 7, "userID": 3, "destinationID": 4, "travelers": 5, "date": "2020/05/28", "duration": 20, "status": "approved", "suggestedActivities": []}])
+  })
+
+  it('should be able to find current trips', function() {
+    expect(user.findCurrentTrips()).to.equal(0)
+  })
 });
