@@ -59,7 +59,10 @@ function loginUser() {
   $('.login-form').submit(e => {
     e.preventDefault();
   })
-  console.log(tripData)
+  let arrayOfFifty = []
+  for (let i = 0; i < 50; i++) {
+    arrayOfFifty.push(`traveler${i + 1}`);
+  }
   let userInput = $('#user-name').val();
   let passwordInput = $('#password').val();
   if (userInput === 'agency' && passwordInput === 'travel2020') {
@@ -68,8 +71,15 @@ function loginUser() {
     passwordInput === 'travel2020') {
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
+    populateDestinationSelect(destinationData)
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
   }
+}
+
+function populateDestinationSelect(destinationData) {
+  destinationData.forEach(destination => {
+    domUpdates.populateDestinationDropDown(destination)
+  })
 }
 

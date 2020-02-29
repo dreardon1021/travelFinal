@@ -6,12 +6,49 @@
 }
 
 .add-trip-sidebar {
-  @include flex(column, space-between, center);
+  @include flex(column, null, center);
   width: 20%;
   background-color: rgba(255, 255, 255, 0.5);
   border: 1px solid black;
   position: relative;
   right: 1.2em;
+
+  form {
+    @include flex(column, space-between, center);
+    height: 80%;
+    div {
+      @include flex(column, flex-start, center);
+      height: fit-content;
+    }
+
+    label {
+      margin-top: 1em;
+      height: fit-content;
+    }
+
+    button {
+      width: 90%;
+      height: 5em;
+      margin-top: 3em;
+      color: white;
+      background-color: $nav-background;
+    }
+
+    input {
+      width: 90%;
+      height: 4em;
+      margin-top: 2em;
+    }
+
+    select {
+      @extend input;
+      height: 4em;
+    }
+  }
+}
+
+.date-label {
+  margin-left: 2em;
 }
 
 .traveler-data-section {
@@ -25,7 +62,8 @@
   @include flex(row, space-around, center)
 }
 
-.traveller-data-row {
+.traveler-data-row {
+  @include flex(column, space-between, flex-start);
   width: 100%;
   height: 30%;
   background-color: rgba(255, 255, 255, 0.5);
