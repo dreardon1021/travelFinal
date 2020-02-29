@@ -13,6 +13,15 @@ const domUpdates = {
 
   populateDestinationDropDown: (destination) => {
     $('#select-destination').append(`<option value="${destination.destination}">${destination.destination}</option>`)
+  },
+
+  populateTravelerInfo: (traveler, travelerID, tripData, destinationData) => {
+    $('.display-username').text(`Welcome ${traveler.name}!`)
+    $('.display-money').text(`You Spent $${traveler.calculateUserSpent(travelerID, tripData, destinationData)} This Year`)
+  },
+
+  populateUpcomingTrips: () => {
+    
   }
 
 }

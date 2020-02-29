@@ -76,6 +76,7 @@ function loginUser() {
     traveler = new Traveler(extractUserId(userInput))
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
+    domUpdates.populateTravelerInfo(traveler, traveler.id, tripData, destinationData)
     populateDestinationSelect(destinationData)
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
