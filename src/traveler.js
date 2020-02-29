@@ -1,7 +1,7 @@
 import User from './user.js'
 
 class Traveler extends User {
-  constructor(travelerObj, tripData) {
+  constructor(travelerObj) {
     super()
     this.id = travelerObj.id;
     this.name = travelerObj.name;
