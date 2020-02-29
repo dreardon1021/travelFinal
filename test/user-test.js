@@ -38,9 +38,9 @@ describe('User', function() {
     expect(user.findUserUpcomingTrips(3, tripData)).to.deep.equal([{"id": 7, "userID": 3, "destinationID": 4, "travelers": 5, "date": "2020/05/28", "duration": 20, "status": "approved", "suggestedActivities": []}])
   })
 
-  // it('should be able to find current trips', function() {
-  //   expect(user.findCurrentTrips()).to.equal(0)
-  // })
+  it('should be able to find current trips', function() {
+    expect(user.findCurrentTrips(4, tripData)).to.deep.equal({id: 4, userID: 4, destinationID: 4, travelers: 2, date: '2020/02/25', duration: 10, status: 'approved', suggestedActivities: []})
+  })
 
   it('should be able to calculate user expenditures', function() {
     expect(user.calculateUserSpent(5, tripData, destinationData)).to.equal(10450)

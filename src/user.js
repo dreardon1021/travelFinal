@@ -1,5 +1,6 @@
 import destinationData from './data/destinationData';
 
+
 var moment = require('moment');
 
 class User {
@@ -10,7 +11,7 @@ class User {
   findPendingRequests(travelerID, tripData) {
     let pendingTrips = tripData.filter(trip => trip.status === 'pending');
     pendingTrips.forEach(pendingTrip => {
-      if (pendingTrip.userID === travelerID) {
+      if (pendingTrip.userID === travelerID) {xcontext
         this.pendingRequests.push(pendingTrip)
       }
     });
@@ -20,8 +21,7 @@ class User {
     let previousTrips = []
     let userTrips = tripData.filter(vacation => vacation.userID === travelerID);
     userTrips.forEach(trip => {
-      let joinedDate = trip.date.split('').filter(element => element !== '/').join('')
-      let comparison = moment(joinedDate, "YYYYMMDD").fromNow();
+      let comparison = moment(trip.date, "YYYY/MM/DD").fromNow();
       if (comparison.includes('ago')) {
         previousTrips.push(trip)
       }
@@ -33,8 +33,7 @@ class User {
     let upcomingTrips = [];
     let userTrips = tripData.filter(vacation => vacation.userID === travelerID);
     userTrips.forEach(trip => {
-      let joinedDate = trip.date.split('').filter(element => element !== '/').join('')
-      let comparison = moment(joinedDate, "YYYYMMDD").fromNow();
+      let comparison = moment(trip.date, "YYYY/MM/DD").fromNow();
       if (comparison.includes('in')) {
         upcomingTrips.push(trip)
       }
@@ -42,10 +41,16 @@ class User {
     return upcomingTrips
   }
 
-  // findCurrentTrips(travelerID, tripData) {
-  //   let stuff = moment().subtract(3, 'days').calendar();
-  //   console.log(stuff)
-  // }
+  findCurrentTrips(travelerID, tripData) {
+    let userTrips = tripData.filter(vacation => vacation.userID === travelerID);
+    let currentTrip = userTrips.filter(trip => {
+      let startDate = new Date(trip.date)
+      let endDate = new Date(moment().add(trip.duration, 'days').calendar())
+      let today = new Date()
+      return startDate < today && today < endDate
+    })
+    return currentTrip.pop()
+  }
 
   calculateUserSpent(travelerID, tripData, destinationData) {
     let userTrips = this.findUserPastTrips(travelerID, tripData);
