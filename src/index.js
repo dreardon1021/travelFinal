@@ -55,6 +55,8 @@ fetchData().then(data => {
 
 $('.login-button').click(loginUser)
 
+
+// Login and population
 function loginUser() {
   $('.login-form').submit(e => {
     e.preventDefault();
@@ -69,6 +71,7 @@ function loginUser() {
     domUpdates.hide('.login-form');
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
+    extractUserId(userInput)
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
     populateDestinationSelect(destinationData)
@@ -77,9 +80,21 @@ function loginUser() {
   }
 }
 
+//helper function in login
 function populateDestinationSelect(destinationData) {
   destinationData.forEach(destination => {
     domUpdates.populateDestinationDropDown(destination)
   })
+}
+
+//helper function in login
+function extractUserId(userInput) {
+  if (userInput.length === 10) {
+    let id = userInput.split('').splice(-2, 2).join('');
+    console.log(id)
+  } else if(userInput.length === 9) {
+    let id = userInput.split('').splice(-1, 1).join('');
+    console.log(id)
+  }
 }
 
