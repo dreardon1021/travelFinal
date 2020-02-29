@@ -27,9 +27,9 @@ function fetchData() {
   return Promise.all([travelerData, tripData, destinationData])
     .then(response => {
       let dataObj = {};
-      dataObj.userData = response[0];
-      dataObj.tripData = response[1];
-      dataObj.destinationData = response[2];
+      dataObj.userData = response[0].travelers;
+      dataObj.tripData = response[1].trips;
+      dataObj.destinationData = response[2].destinations;
       // console.log(dataObj)
       return dataObj;
     })
@@ -59,15 +59,15 @@ function loginUser() {
   $('.login-form').submit(e => {
     e.preventDefault();
   })
+  console.log(tripData)
   let userInput = $('#user-name').val();
   let passwordInput = $('#password').val();
   if (userInput === 'agency' && passwordInput === 'travel2020') {
-    domUpdates.hide('.login-form')
-    // let agent = new agent()
+    domUpdates.hide('.login-form');
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
-    domUpdates.hide('.login-form');
-    //let traveler = new traveler(userData[userInput])
+    domUpdates.hide('.login-page');
+    domUpdates.displayTraveler('.traveler-dashboard')
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
   }
