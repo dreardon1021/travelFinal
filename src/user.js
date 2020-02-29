@@ -1,6 +1,4 @@
 import destinationData from './data/destinationData';
-
-
 var moment = require('moment');
 
 class User {
