@@ -1,4 +1,4 @@
-import destinationData from './data/destinationData';
+// import destinationData from './data/destinationData';
 var moment = require('moment');
 
 class User {
@@ -9,7 +9,7 @@ class User {
   findPendingRequests(travelerID, tripData) {
     let pendingTrips = tripData.filter(trip => trip.status === 'pending');
     pendingTrips.forEach(pendingTrip => {
-      if (pendingTrip.userID === travelerID) {xcontext
+      if (pendingTrip.userID === travelerID) {
         this.pendingRequests.push(pendingTrip)
       }
     });
@@ -43,9 +43,11 @@ class User {
     let userTrips = tripData.filter(vacation => vacation.userID === travelerID);
     let currentTrip = userTrips.filter(trip => {
       let startDate = new Date(trip.date)
-      let endDate = new Date(moment().add(trip.duration, 'days').calendar())
-      let today = new Date()
-      return startDate < today && today < endDate
+      let endDate = new Date(moment(startDate).add(trip.duration, 'days'))
+      let today = new Date();
+      if (startDate < today && today < endDate) {
+        return trip
+      }
     })
     return currentTrip.pop()
   }
