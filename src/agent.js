@@ -18,13 +18,12 @@ class Agent extends User {
     let total = 0;
     travelerData.forEach(traveler => {
       if (this.findCurrentTrips(traveler.id, tripData)) {
-        // console.log((this.findCurrentTrips(traveler.id, tripData)))
         let tripTravelers = (this.findCurrentTrips(traveler.id, tripData));
         total += tripTravelers.travelers
       }
     })
     return total;
   }
-};
+}
 
 export default Agent;

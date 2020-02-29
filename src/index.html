@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="../images/airplane.png">
   <title>Plane and Simple</title>
 </head>
 <body>
@@ -34,16 +35,44 @@
     <section class="traveler-dashboard">
       <aside class="add-trip-sidebar">
         <h3>Book A Trip</h3>
+        <form class="new-trip-form" action="">
+          <div class="start-date-container">
+            <label class="date-label"for="start-date">Start Date</label>
+            <input class="start-date" type="date">
+          </div>
+          <div class="end-date-container">
+            <label class="date-label" for="end-date">End Date</label>
+            <input class="end-date" type="date">
+          </div>
+          <div class="traveler-input">
+            <label for="traveler-number">Number of Travelers</label>
+            <input class="traveler" type="number" placeholder="Enter number of travelers">
+          </div>
+          <label for="select-destination">Choose a Destination:</label>
+          <select id="select-destination">
+            
+          </select>
+          <button class="get-estimate-button">Get Estimate</button>
+        </form>
       </aside>
       <div class="traveler-data-section">
         <div class="upcoming-traveler-trips traveler-data-row">
+          <h4>Upcoming Trips</h4>
+          <div class="trip-cards">
 
+          </div>
         </div>
         <div class="past-trips traveler-data-row">
+          <h4>Past Trips</h4>
+          <div class="trip-cards">
 
+          </div>
         </div>
         <div class="traveler-trip-requests traveler-data-row">
+          <h4>Trip Requests</h4>
+          <div class="trip-cards">
 
+          </div>
         </div>
       </div>
     </section>
