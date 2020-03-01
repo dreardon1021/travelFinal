@@ -116,6 +116,9 @@ function bookTrip() {
   $('#new-trip-form').submit(e => {
     e.preventDefault();
   })
+  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
+  trip.bookTrip(trip);
+  setTimeout(domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData), 8000);
 }
 
 function getDestinationID(destinationData) {

@@ -31,19 +31,21 @@ const domUpdates = {
   populateUpcomingTrips: (traveler, travelerID, tripData, destinationData) => {
     let userTrips = traveler.findUserUpcomingTrips(travelerID, tripData)
     userTrips.forEach(trip => {
-      let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-      $('.upcoming-trip-cards').append(`
-        <div class="trip-card">
-          <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
-          <h5>${foundDestination.destination}</h5>
-          <div class="card-data">
-            <ul>
-              <li><strong>Travelers:</strong> ${trip.travelers}</li>
-              <li><strong>Start Date:</strong> ${trip.date}</li>
-              <li><strong>Duration:</strong> ${trip.duration}</li>
-            </ul>
-          </div>
-        </div>`)
+      if (trip.status === 'approved') {
+        let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+        $('.upcoming-trip-cards').append(`
+          <div class="trip-card">
+            <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+            <h5>${foundDestination.destination}</h5>
+            <div class="card-data">
+              <ul>
+                <li><strong>Travelers:</strong> ${trip.travelers}</li>
+                <li><strong>Start Date:</strong> ${trip.date}</li>
+                <li><strong>Duration:</strong> ${trip.duration}</li>
+              </ul>
+            </div>
+          </div>`)
+      }
     })
   },
 
