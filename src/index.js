@@ -118,7 +118,10 @@ function bookTrip() {
   })
   trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
   trip.bookTrip(trip);
-  setTimeout(domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData), 8000);
+  // setTimeout(() => {
+  //   traveler.findPendingRequests(traveler.id, tripData)
+  //   domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData)
+  // }, 3000);
 }
 
 function getDestinationID(destinationData) {
