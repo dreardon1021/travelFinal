@@ -19,7 +19,7 @@ main {
 }
 
 nav {
-  @include flex(row, center, center);
+  @include flex(row, space-around, center);
   color: white;
   width: 100%;
   height: 5em;
@@ -29,6 +29,15 @@ nav {
     width: 2em;
     height: 2em;
     margin-left: 1em;
+  }
+
+  .name-logo {
+    @include flex(row, center, center);
+    width: fit-content;
+  }
+
+  h2 {
+    color: white;
   }
 }
 
@@ -51,5 +60,26 @@ h4 {
   margin-top: .5em;
   margin-left: .5em;
   width: fit-content;
+  height: fit-content;
 }
+
+h5 {
+  width: fit-content;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1em;
+  z-index: 1;
+  font-size: 1em;
+}
+
+strong {
+  font-weight: 550;
+}
+
+span {
+  font-weight: 600;
+  margin-left: 22.5em;
+  margin-top: 10em;
+}
+
 

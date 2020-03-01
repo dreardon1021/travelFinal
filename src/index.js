@@ -4,6 +4,8 @@
 // An example of how you import jQuery into a JS file if you use jQuery in that file
 import $ from 'jquery';
 import domUpdates from './domUpdates.js'
+import Traveler from './traveler.js'
+import Trip from './trip.js'
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -12,6 +14,7 @@ import './css/base.scss';
 // import './images/turing-logo.png';
 import './images/beach.jpg';
 import './images/airplane.png';
+
 
 function fetchData() {
   let travelerData = fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/travelers/travelers')
@@ -30,7 +33,6 @@ function fetchData() {
       dataObj.userData = response[0].travelers;
       dataObj.tripData = response[1].trips;
       dataObj.destinationData = response[2].destinations;
-      // console.log(dataObj)
       return dataObj;
     })
     .catch(error => console.log(error.message))
@@ -39,6 +41,7 @@ function fetchData() {
 let userData;
 let tripData;
 let destinationData;
+let traveler;
 
 let arrayOfFifty = []
 for (let i = 0; i < 50; i++) {
@@ -55,6 +58,8 @@ fetchData().then(data => {
 
 $('.login-button').click(loginUser)
 
+
+// Login and population
 function loginUser() {
   $('.login-form').submit(e => {
     e.preventDefault();
@@ -69,17 +74,33 @@ function loginUser() {
     domUpdates.hide('.login-form');
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
+    traveler = new Traveler(extractUserId(userInput))
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
     populateDestinationSelect(destinationData)
+    domUpdates.populateTravelerInfo(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populateUpcomingTrips(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populatePastTrips(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData)
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
   }
 }
 
+//helper function in login
 function populateDestinationSelect(destinationData) {
   destinationData.forEach(destination => {
     domUpdates.populateDestinationDropDown(destination)
   })
 }
 
+//helper function in login
+function extractUserId(userInput) {
+  if (userInput.length === 10) {
+    let id = userInput.split('').splice(-2, 2).join('');
+    return userData.find(user => user.id === parseInt(id))
+  } else if (userInput.length === 9) {
+    let id = userInput.split('').splice(-1, 1);
+    return userData.find(user => user.id === parseInt(id))
+  }
+}
