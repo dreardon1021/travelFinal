@@ -88,6 +88,10 @@ const domUpdates = {
     } else {
       $('.pending-trip-cards').append(`<span>Please Make Another Trip Request</span>`)
     }
+  },
+
+  populateTripEstimate: (destinationData, trip) => {
+    $('.populated-estimate').text(`This trip costs $${trip.calculateTripCost(destinationData)}`)
   }
 }
 

@@ -42,6 +42,7 @@ let userData;
 let tripData;
 let destinationData;
 let traveler;
+let trip;
 
 let arrayOfFifty = []
 for (let i = 0; i < 50; i++) {
@@ -57,6 +58,12 @@ fetchData().then(data => {
 
 
 $('.login-button').click(loginUser)
+$('.book-trip-button').click(bookTrip)
+$('.get-estimate-button').click(getTripEstimate)
+$('.start-date').change(enableButtons)
+$('.duration').change(enableButtons)
+$('.traveler').change(enableButtons)
+
 
 
 // Login and population
@@ -102,5 +109,36 @@ function extractUserId(userInput) {
   } else if (userInput.length === 9) {
     let id = userInput.split('').splice(-1, 1);
     return userData.find(user => user.id === parseInt(id))
+  }
+}
+
+function bookTrip() {
+  $('#new-trip-form').submit(e => {
+    e.preventDefault();
+  })
+}
+
+function getDestinationID(destinationData) {
+  let chosenDestination = $('#select-destination').val()
+  let foundDestination = destinationData.find(destination => destination.destination === chosenDestination)
+  return foundDestination.id
+}
+
+function getTripEstimate() {
+  $('#new-trip-form').submit(e => {
+    e.preventDefault();
+  })
+  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
+  domUpdates.populateTripEstimate(destinationData, trip)
+}
+
+
+function enableButtons() {
+  if ($('.start-date').val() !== '' && $('.duration').val() !== '' && $('.traveler').val() !== '') {
+    $('.get-estimate-button').prop('disabled', false).removeClass('disabled').addClass('enabled')
+    $('.book-trip-button').prop('disabled', false).removeClass('disabled').addClass('enabled')
+  } else {
+    $('.get-estimate-button').prop('disabled', 'disabled').removeClass('enabled').addClass('disabled')
+    $('.book-trip-button').prop('disabled', 'disabled').removeClass('enabled').addClass('disabled')
   }
 }
