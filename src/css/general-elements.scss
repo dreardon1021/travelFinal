@@ -32,7 +32,7 @@ nav {
   }
 
   .name-logo {
-    @include flex(row, center, center)
+    @include flex(row, center, center);
     width: fit-content;
   }
 
@@ -60,7 +60,26 @@ h4 {
   margin-top: .5em;
   margin-left: .5em;
   width: fit-content;
+  height: fit-content;
 }
 
+h5 {
+  width: fit-content;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1em;
+  z-index: 1;
+  font-size: 1em;
+}
+
+strong {
+  font-weight: 550;
+}
+
+span {
+  font-weight: 600;
+  margin-left: 22.5em;
+  margin-top: 10em;
+}
 
 

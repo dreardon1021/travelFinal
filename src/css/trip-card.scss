@@ -1,0 +1,31 @@
+.trip-card {
+  @include flex(column, center, center);
+  width: 15em;
+  height: 10em;
+  border: 1px solid black;
+  margin-left: 1em;
+}
+
+.card-data {
+  width: fit-content;
+  height: fit-content;
+  z-index: 1;
+}
+
+ul {
+  list-style-type: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  @include flex(column, center, center);
+  width: 13em;
+
+  li {
+    height: fit-content;
+    margin-bottom: .2em;
+  }
+}
+
+.card-background {
+  z-index: 0;
+  width: 10em;
+  height: 10em;
+}

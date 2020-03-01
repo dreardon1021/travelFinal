@@ -5,6 +5,7 @@
 import $ from 'jquery';
 import domUpdates from './domUpdates.js'
 import Traveler from './traveler.js'
+import Trip from './trip.js'
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -76,8 +77,11 @@ function loginUser() {
     traveler = new Traveler(extractUserId(userInput))
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
-    domUpdates.populateTravelerInfo(traveler, traveler.id, tripData, destinationData)
     populateDestinationSelect(destinationData)
+    domUpdates.populateTravelerInfo(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populateUpcomingTrips(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populatePastTrips(traveler, traveler.id, tripData, destinationData)
+    domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData)
   } else {
     $('.login-error').text(`Please enter in a valid user name and login`)
   }
