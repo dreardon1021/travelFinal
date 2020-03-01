@@ -88,13 +88,33 @@ const domUpdates = {
         </div>`)
       })
     } else {
-      $('.pending-trip-cards').append(`<span>Please Make Another Trip Request</span>`)
+      $('.pending-trip-cards').append(`<span id="request-message">Please Make Another Trip Request</span>`)
     }
   },
 
   populateTripEstimate: (destinationData, trip) => {
     $('.populated-estimate').text(`This trip costs $${trip.calculateTripCost(destinationData)}`)
-  }
+  },
+
+  populateNewTrip: (destinationData, trip) => {
+    let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+    $('.pending-trip-cards').append(`
+        <div class="trip-card">
+          <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+          <h5>${foundDestination.destination}</h5>
+          <div class="card-data">
+            <ul>
+              <li><strong>Travelers:</strong> ${trip.travelers}</li>
+              <li><strong>Start Date:</strong> ${trip.date}</li>
+              <li><strong>Duration:</strong> ${trip.duration}</li>
+            </ul>
+          </div>
+        </div>`)
+  },
+
+  removeElement: (elementId)  => {
+    $(elementId).remove()
+}
 }
 
 export default domUpdates;

@@ -44,10 +44,6 @@ let destinationData;
 let traveler;
 let trip;
 
-let arrayOfFifty = []
-for (let i = 0; i < 50; i++) {
-  arrayOfFifty.push(`traveler${i + 1}`);
-}
 
 fetchData().then(data => {
   userData = data.userData;
@@ -118,10 +114,10 @@ function bookTrip() {
   })
   trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
   trip.bookTrip(trip);
-  // setTimeout(() => {
-  //   traveler.findPendingRequests(traveler.id, tripData)
-  //   domUpdates.populatePendingRequests(traveler, traveler.id, tripData, destinationData)
-  // }, 3000);
+  setTimeout(() => {
+    domUpdates.removeElement('#request-message')
+    domUpdates.populateNewTrip(destinationData, trip)
+  }, 1000);
 }
 
 function getDestinationID(destinationData) {
