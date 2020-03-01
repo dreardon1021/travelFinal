@@ -27,11 +27,11 @@ describe('Trip', function() {
   })
 
   it('should be able to know what userId it belongs to', function() {
-    expect(trip.userId).to.equal(5);
+    expect(trip.userID).to.equal(5);
   })
 
   it('should be able to hold an id for destination', function() {
-    expect(trip.destinationId).to.equal(4)
+    expect(trip.destinationID).to.equal(4)
   })
 
   it('shold be able to know how many travlers are on the trip', function() {
@@ -55,6 +55,6 @@ describe('Trip', function() {
   })
 
   it('should be able to calculate trip cost', function() {
-    expect(trip.calculateTripCost(destinationData)).to.equal(1490)
+    expect(trip.calculateTripCost(destinationData)).to.equal(1639)
   })
 });

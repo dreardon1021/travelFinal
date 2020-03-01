@@ -24,7 +24,7 @@ describe('Agent', function() {
   });
 
   it('should be able to caluclate income', function() {
-    expect(agent.calculateAgentIncome(travelerData, tripData, destinationData)).to.equal(1650);
+    expect(agent.calculateAgentIncome(travelerData, tripData, destinationData)).to.equal(1815);
   });
 
   it('should be able to calculate the number of current travelers', function() {

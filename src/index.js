@@ -6,6 +6,7 @@ import $ from 'jquery';
 import domUpdates from './domUpdates.js'
 import Traveler from './traveler.js'
 import Trip from './trip.js'
+var moment = require('moment');
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
@@ -112,7 +113,7 @@ function bookTrip() {
   $('#new-trip-form').submit(e => {
     e.preventDefault();
   })
-  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
+  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), moment($('.start-date').val()).format('YYYY/MM/DD'), parseInt($('.duration').val()))
   trip.bookTrip(trip);
   setTimeout(() => {
     domUpdates.removeElement('#request-message')
@@ -130,7 +131,7 @@ function getTripEstimate() {
   $('#new-trip-form').submit(e => {
     e.preventDefault();
   })
-  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), $('.start-date').val(), parseInt($('.duration').val()))
+  trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), moment($('.start-date').val()).format('YYYY/MM/DD'), parseInt($('.duration').val()))
   domUpdates.populateTripEstimate(destinationData, trip)
 }
 

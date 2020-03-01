@@ -83,6 +83,10 @@
   margin-top: 3em;
   color: white;
   background-color: $nav-background;
+  &:hover {
+    color: $nav-background;
+    background-color: rgb(255, 255, 255);
+  }
 }
 
 .disabled {
