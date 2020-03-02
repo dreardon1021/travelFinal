@@ -56,6 +56,7 @@ $('.get-estimate-button').click(getTripEstimate)
 $('.start-date').change(enableButtons)
 $('.duration').change(enableButtons)
 $('.traveler').change(enableButtons)
+$('.search-button').click(searchAndPopulateUser)
 
 
 
@@ -158,4 +159,12 @@ function populateAgentDash() {
     domUpdates.populateAgentIncome(agent, userData, tripData, destinationData);
     domUpdates.populateCurrentTravelers(agent, userData, tripData);
   })
+}
+
+function searchAndPopulateUser() {
+  if (userData.find(user => user.id === parseInt($('.search-input').val()))) {
+    return userData.find(user => user.id === parseInt($('.search-input').val()))
+  } else if (userData.find(user => user.name.toLowerCase() === $('.search-input').val().toLowerCase())) {
+    return (userData.find(user => user.name.toLowerCase() === $('.search-input').val().toLowerCase()))
+  }
 }
