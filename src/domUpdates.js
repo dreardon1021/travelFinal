@@ -35,7 +35,7 @@ const domUpdates = {
   populateUpcomingTrips: (traveler, travelerID, tripData, destinationData) => {
     let userTrips = traveler.findUserUpcomingTrips(travelerID, tripData)
     userTrips.forEach(trip => {
-      if (trip.status === 'approved') {
+      if (trip.status === 'approved' && traveler.findCurrentTrips(traveler.id, tripData) !== trip) {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.upcoming-trip-cards').append(`
           <div class="trip-card">
@@ -77,19 +77,21 @@ const domUpdates = {
     if (traveler.pendingRequests.length !== 0) {
       let userTrips = traveler.pendingRequests;
       userTrips.forEach(trip => {
-        let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-        $('.pending-trip-cards').append(`
-        <div class="trip-card">
-          <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
-          <h5>${foundDestination.destination}</h5>
-          <div class="card-data">
-            <ul>
-              <li><strong>Travelers:</strong> ${trip.travelers}</li>
-              <li><strong>Start Date:</strong> ${trip.date}</li>
-              <li><strong>Duration:</strong> ${trip.duration}</li>
-            </ul>
-          </div>
-        </div>`)
+        if (traveler.findCurrentTrips(traveler.id, tripData) !== trip) {
+          let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+          $('.pending-trip-cards').append(`
+          <div class="trip-card">
+            <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+            <h5>${foundDestination.destination}</h5>
+            <div class="card-data">
+              <ul>
+                <li><strong>Travelers:</strong> ${trip.travelers}</li>
+                <li><strong>Start Date:</strong> ${trip.date}</li>
+                <li><strong>Duration:</strong> ${trip.duration}</li>
+              </ul>
+            </div>
+          </div>`)
+        }
       })
     } else {
       $('.pending-trip-cards').append(`<span id="request-message">Please Make Another Trip Request</span>`)
@@ -184,7 +186,7 @@ const domUpdates = {
   populateFoundUserUpcomingTrips: (traveler, tripData, destinationData) => {
     let userTrips = traveler.findUserUpcomingTrips(traveler.id, tripData)
     userTrips.forEach(trip => {
-      if (trip.status === 'approved') {
+      if (trip.status === 'approved' && traveler.findCurrentTrips(traveler.id, tripData) !== trip) {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.upcoming-trip-cards').append(`
           <div class="agent-trip-card">
@@ -205,8 +207,9 @@ const domUpdates = {
   populateFoundUserPastTrips: (traveler, tripData, destinationData) => {
     let userTrips = traveler.findUserPastTrips(traveler.id, tripData)
     userTrips.forEach(trip => {
-      let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-      $('.past-trip-cards').append(`
+      if (traveler.findCurrentTrips(traveler.id, tripData) !== trip) {
+        let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+        $('.past-trip-cards').append(`
         <div class="agent-trip-card">
           <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
           <h5>${foundDestination.destination}</h5>
@@ -218,6 +221,7 @@ const domUpdates = {
             </ul>
           </div>
         </div>`)
+      }
     })
   }
 }
