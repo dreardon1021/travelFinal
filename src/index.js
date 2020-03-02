@@ -1,18 +1,10 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-// An example of how you import jQuery into a JS file if you use jQuery in that file
+//imports and requires
 import $ from 'jquery';
 import domUpdates from './domUpdates.js'
 import Traveler from './traveler.js'
 import Trip from './trip.js'
 var moment = require('moment');
-
-// An example of how you tell webpack to use a CSS (SCSS) file
 import './css/base.scss';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png';
 import './images/beach.jpg';
 import './images/airplane.png';
 
@@ -39,13 +31,14 @@ function fetchData() {
     .catch(error => console.log(error.message))
 }
 
+//Global Vars
 let userData;
 let tripData;
 let destinationData;
 let traveler;
 let trip;
 
-
+//Fetchd Data
 fetchData().then(data => {
   userData = data.userData;
   tripData = data.tripData;
@@ -53,7 +46,7 @@ fetchData().then(data => {
 })
   .catch(error => console.log(error.message))
 
-
+//Event Listeners
 $('.login-button').click(loginUser)
 $('.book-trip-button').click(bookTrip)
 $('.get-estimate-button').click(getTripEstimate)
@@ -76,6 +69,7 @@ function loginUser() {
   let passwordInput = $('#password').val();
   if (userInput === 'agency' && passwordInput === 'travel2020') {
     domUpdates.hide('.login-form');
+    populateAgentDash()
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
     traveler = new Traveler(extractUserId(userInput))
@@ -109,6 +103,7 @@ function extractUserId(userInput) {
   }
 }
 
+//Booktrip, instantiate new trip, call from trip and domUpdates
 function bookTrip() {
   $('#new-trip-form').submit(e => {
     e.preventDefault();
@@ -121,12 +116,14 @@ function bookTrip() {
   }, 1000);
 }
 
+//helper function
 function getDestinationID(destinationData) {
   let chosenDestination = $('#select-destination').val()
   let foundDestination = destinationData.find(destination => destination.destination === chosenDestination)
   return foundDestination.id
 }
 
+//get trip cost
 function getTripEstimate() {
   $('#new-trip-form').submit(e => {
     e.preventDefault();
@@ -135,7 +132,7 @@ function getTripEstimate() {
   domUpdates.populateTripEstimate(destinationData, trip)
 }
 
-
+//enable and disable buttons based on form validity
 function enableButtons() {
   if ($('.start-date').val() !== '' && $('.duration').val() !== '' && $('.traveler').val() !== '') {
     $('.get-estimate-button').prop('disabled', false).removeClass('disabled').addClass('enabled')
@@ -144,4 +141,10 @@ function enableButtons() {
     $('.get-estimate-button').prop('disabled', 'disabled').removeClass('enabled').addClass('disabled')
     $('.book-trip-button').prop('disabled', 'disabled').removeClass('enabled').addClass('disabled')
   }
+}
+
+//Start of Agent functions and helper functions
+
+function populateAgentDash() {
+  
 }
