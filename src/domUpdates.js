@@ -127,7 +127,7 @@ const domUpdates = {
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.agent-aside').append(`
-        <div class="trip-card-pending-agent">
+        <div class="${trip.id} trip-card-pending-agent">
           <div class="card-header">
             <button class="approve">Approve</button>
             <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
@@ -145,7 +145,15 @@ const domUpdates = {
         </div>`)
       })
     }
-  }
+  },
+
+  populateAgentIncome: (agent, userData, tripData, destinationData) => {
+    $('.display-money').text(`You made $${agent.calculateAgentIncome(userData, tripData, destinationData).toFixed(2)} this year`)
+  },
+
+  populateCurrentTravelers: (agent, userData, tripData) => {
+    $('.display-username').text(`There are ${agent.calculateNumOfCurrentTravelers(userData, tripData)} travelers today`)
+  },
 }
 
 export default domUpdates;

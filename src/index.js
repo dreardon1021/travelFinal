@@ -154,6 +154,8 @@ function populateAgentDash() {
   agent = new Agent();
   userData.forEach(user => {
     traveler = new Traveler(user)
-    domUpdates.populateRequestsForAgent(traveler, tripData, destinationData)
+    domUpdates.populateRequestsForAgent(traveler, tripData, destinationData);
+    domUpdates.populateAgentIncome(agent, userData, tripData, destinationData);
+    domUpdates.populateCurrentTravelers(agent, userData, tripData);
   })
 }
