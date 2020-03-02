@@ -120,10 +120,10 @@ const domUpdates = {
     $(elementId).remove()
   },
 
-  populateRequestsForAgent: (agent, travelerID, tripData, destinationData) => {
-    agent.findPendingRequests(travelerID, tripData)
-    if (agent.pendingRequests.length !== 0) {
-      let userTrips = agent.pendingRequests;
+  populateRequestsForAgent: (traveler, tripData, destinationData) => {
+    traveler.findPendingRequests(traveler.id, tripData)
+    if (traveler.pendingRequests.length !== 0) {
+      let userTrips = traveler.pendingRequests;
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.agent-aside').append(`

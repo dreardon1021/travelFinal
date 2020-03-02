@@ -74,8 +74,7 @@ function loginUser() {
     domUpdates.hide('.login-page');
     domUpdates.displayAgent('.agent-dashboard')
     populateAgentDash()
-  } else if (arrayOfFifty.includes(userInput) &&
-    passwordInput === 'travel2020') {
+  } else if (arrayOfFifty.includes(userInput) && passwordInput === 'travel2020') {
     traveler = new Traveler(extractUserId(userInput))
     domUpdates.hide('.login-page');
     domUpdates.displayTraveler('.traveler-dashboard')
@@ -106,6 +105,9 @@ function extractUserId(userInput) {
     return userData.find(user => user.id === parseInt(id))
   }
 }
+
+//helper function for traveler population
+// function populateTraveler()
 
 //Booktrip, instantiate new trip, call from trip and domUpdates
 function bookTrip() {
@@ -151,6 +153,7 @@ function enableButtons() {
 function populateAgentDash() {
   agent = new Agent();
   userData.forEach(user => {
-    domUpdates.populateRequestsForAgent(agent, user.id, tripData, destinationData)
+    traveler = new Traveler(user)
+    domUpdates.populateRequestsForAgent(traveler, tripData, destinationData)
   })
 }
