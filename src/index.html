@@ -39,24 +39,26 @@
     <section class="traveler-dashboard">
       <aside class="add-trip-sidebar">
         <h3>Book A Trip</h3>
-        <form class="new-trip-form" action="">
+        <form id="new-trip-form" action="">
           <div class="start-date-container">
             <label class="date-label"for="start-date">Start Date</label>
-            <input class="start-date" type="date">
+            <input class="start-date" type="date" required>
           </div>
           <div class="end-date-container">
-            <label class="date-label" for="end-date">End Date</label>
-            <input class="end-date" type="date">
+            <label class="date-label" for="duration">Duration</label>
+            <input class="duration" type="number" min="1" placeholder="Enter number of days" required>
           </div>
           <div class="traveler-input">
-            <label for="traveler-number">Number of Travelers</label>
-            <input class="traveler" type="number" placeholder="Enter number of travelers">
+            <label for="traveler-input">Number of Travelers</label>
+            <input class="traveler" type="number" min="1" placeholder="Enter number of travelers" required>
           </div>
           <label for="select-destination">Choose a Destination:</label>
-          <select id="select-destination">
+          <select id="select-destination" required>
 
           </select>
-          <button class="get-estimate-button">Get Estimate</button>
+          <p class="populated-estimate"></p>
+          <button class="get-estimate-button disabled" disabled>Get Estimate</button>
+          <button class="book-trip-button disabled" disabled>Book Trip</button>
         </form>
       </aside>
       <div class="traveler-data-section">
@@ -76,6 +78,39 @@
           <h4>Trip Requests</h4>
           <div class="pending-trip-cards trip-cards">
 
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="agent-dashboard">
+      <aside class="agent-aside">
+        <h3>Pending Requests</h3>
+      </aside>
+      <div class="agent-data-section">
+        <div class="search-area">
+          <input class="search-input" type="text" placeholder="Enter a user">
+          <button class="search-button"><img src="../images/magnifying-glass.png" alt="magnifying glass"></button>
+        </div>
+        <div class="found-user-info">
+          <h4 class="found-user-name"></h4>
+          <h4 class="found-user-spent"></h4>
+        </div>
+        <div class="current-trips traveler-data-row">
+          <h4>Users Current Trip</h4>
+          <div class="current-trip-cards trip-cards">
+              <span class="please-search-message">Please search for a user</span>
+          </div>
+        </div>
+        <div class="upcoming-trips traveler-data-row">
+          <h4>Users Upcoming Trips</h4>
+          <div class="upcoming-trip-cards trip-cards">
+              <span class="please-search-message">Please search for a user</span>
+          </div>
+        </div>
+        <div class="past-trips traveler-data-row">
+          <h4>Users Past Trips</h4>
+          <div class="past-trip-cards trip-cards">
+            <span class="please-search-message">Please search for a user</span>
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@
 
   form {
     @include flex(column, space-between, center);
-    height: 80%;
+    height: 85%;
     div {
       @include flex(column, flex-start, center);
       height: fit-content;
@@ -24,14 +24,6 @@
     label {
       margin-top: 1em;
       height: fit-content;
-    }
-
-    button {
-      width: 90%;
-      height: 5em;
-      margin-top: 3em;
-      color: white;
-      background-color: $nav-background;
     }
 
     input {
@@ -45,6 +37,13 @@
       height: 4em;
     }
   }
+}
+
+.populated-estimate {
+  width: fit-content;
+  height: fit-content;
+  position: relative;
+  top: 1em;
 }
 
 .date-label {
@@ -73,7 +72,25 @@
 }
 
 .trip-cards {
-  @include flex(row, space-between, center)
+  @include flex(row, space-between, center);
   height: 100%;
   width: fit-content;
+}
+
+.enabled {
+  width: 90%;
+  height: 5em;
+  margin-top: 3em;
+  color: white;
+  background-color: $nav-background;
+  &:hover {
+    color: $nav-background;
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+.disabled {
+  @extend .enabled;
+  background-color: rgb(163, 163, 163);
+  color: black;
 }

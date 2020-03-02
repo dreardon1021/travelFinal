@@ -24,6 +24,11 @@
     width: 90%;
     height: fit-content;
   }
+
+  .login-error {
+    width: fit-content;
+    margin-top: 1em;
+  }
 }
 
 input {
@@ -47,6 +52,10 @@ input {
   color: white;
   background-color: $nav-background;
   font-size: 1em;
+  &:hover {
+    color: $nav-background;
+    background-color: rgb(255, 255, 255);
+  }
 }
 
 .user-name-container {
@@ -66,9 +75,4 @@ label {
   position: relative;
   left: 2.9em;
   align-self: flex-start;
-}
-
-.login-error {
-  width: fit-content;
-  margin-top: 1em;
 }

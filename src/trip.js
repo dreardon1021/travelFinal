@@ -3,8 +3,8 @@ import tripData from "./data/tripData";
 class Trip {
   constructor(id, userId, destinationId, travelerCount, startDate, duration) {
     this.id = id;
-    this.userId = userId;
-    this.destinationId = destinationId;
+    this.userID = userId;
+    this.destinationID = destinationId;
     this.travelers = travelerCount;
     this.date = startDate;
     this.duration = duration;
@@ -14,10 +14,24 @@ class Trip {
   }
 
   calculateTripCost(destinationData) {
-    let tripDestination = destinationData.find(destination => destination.id === this.destinationId);
+    let tripDestination = destinationData.find(destination => destination.id === this.destinationID);
     let lodgingTotal = this.duration * tripDestination.estimatedLodgingCostPerDay;
     let flightTotal = this.travelers * tripDestination.estimatedFlightCostPerPerson;
-    return lodgingTotal + flightTotal
+    let agencyFee = (lodgingTotal + flightTotal) * .10
+    return lodgingTotal + flightTotal + agencyFee
+  }
+
+  submitRequest(trip) {
+    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(trip),
+    })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error.message))
   }
 }
 

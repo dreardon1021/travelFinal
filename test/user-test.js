@@ -43,6 +43,6 @@ describe('User', function() {
   })
 
   it('should be able to calculate user expenditures', function() {
-    expect(user.calculateUserSpent(5, tripData, destinationData)).to.equal(10450)
+    expect(user.calculateUserSpent(5, tripData, destinationData)).to.equal(11495)
   });
 });

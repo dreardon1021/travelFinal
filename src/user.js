@@ -60,7 +60,7 @@ class User {
       let costOfDestination = (arrivalSpot.estimatedLodgingCostPerDay * trip.duration) + (arrivalSpot.estimatedFlightCostPerPerson * trip.travelers);
       cost += costOfDestination;
     })
-    return cost
+    return cost + (cost * .10);
   }
 }
 
