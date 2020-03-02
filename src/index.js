@@ -165,7 +165,8 @@ function populateAgentDash() {
 function searchUserFunctions() {
   traveler = new Traveler(searchUser())
   domUpdates.populateFoundUserInfo(traveler, tripData, destinationData)
-  domUpdates.removeElement('.please-search-message')
+  domUpdates.removeElement('.please-search-message');
+  domUpdates.removeElement('.agent-trip-card');
   domUpdates.populateFoundUserCurrentTrip(traveler, tripData, destinationData)
 }
 

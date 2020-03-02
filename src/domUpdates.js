@@ -179,6 +179,10 @@ const domUpdates = {
         </div>
       </div>`)
     }
+  },
+
+  populateFoundUserUpcomingTrips: () => {
+    
   }
 }
 
