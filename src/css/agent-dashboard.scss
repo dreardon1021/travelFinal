@@ -40,6 +40,7 @@
   width: fit-content;
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 1em;
 
   input {
     border-radius: .4em;
@@ -55,5 +56,43 @@
       @extend button
     }
   }
+}
+
+
+.card-header {
+  @include flex(row, space-between, null);
+  width : 98%;
+  height: fit-content;
+
+  .approve {
+    background-color: green;
+    width: 5em;
+    height: 2em;
+    margin-top: .2em;
+    color: white;
+
+    &:hover {
+      background-color: white;
+      color: green;
+    }
+   }
+
+   .deny {
+    @extend .approve;
+    background-color: red;
+
+    &:hover {
+      background-color: white;
+      color: red;
+    }
+   }
+}
+
+.trip-card-pending-agent {
+    @include flex(column, center, center);
+    width: 15em;
+    height: 12em;
+    border: 1px solid black;
+    margin-top: 1em;
 }
 

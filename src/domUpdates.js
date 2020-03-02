@@ -127,11 +127,16 @@ const domUpdates = {
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.agent-aside').append(`
-        <div class="trip-card">
-          <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+        <div class="trip-card-pending-agent">
+          <div class="card-header">
+            <button class="approve">Approve</button>
+            <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+            <button class="deny">Deny</button>
+          </div>
           <h5>${foundDestination.destination}</h5>
           <div class="card-data">
             <ul>
+              <li><strong>User Id:</strong> ${trip.userID}</li>
               <li><strong>Travelers:</strong> ${trip.travelers}</li>
               <li><strong>Start Date:</strong> ${trip.date}</li>
               <li><strong>Duration:</strong> ${trip.duration}</li>
