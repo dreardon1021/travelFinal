@@ -8,6 +8,7 @@ import './css/base.scss';
 import './images/beach.jpg';
 import './images/airplane.png';
 import './images/magnifying-glass.png';
+import Agent from './agent.js';
 
 
 function fetchData() {
@@ -38,6 +39,7 @@ let tripData;
 let destinationData;
 let traveler;
 let trip;
+let agent;
 
 //Fetchd Data
 fetchData().then(data => {
@@ -146,7 +148,9 @@ function enableButtons() {
 }
 
 //Start of Agent functions and helper functions
-
 function populateAgentDash() {
-  
+  agent = new Agent();
+  userData.forEach(user => {
+    domUpdates.populateRequestsForAgent(agent, user.id, tripData, destinationData)
+  })
 }

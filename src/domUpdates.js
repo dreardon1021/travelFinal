@@ -120,13 +120,13 @@ const domUpdates = {
     $(elementId).remove()
   },
 
-  populateRequestsForAgent: (traveler, travelerID, tripData, destinationData) => {
-    traveler.findPendingRequests(travelerID, tripData)
-    if (traveler.pendingRequests.length !== 0) {
-      let userTrips = traveler.pendingRequests;
+  populateRequestsForAgent: (agent, travelerID, tripData, destinationData) => {
+    agent.findPendingRequests(travelerID, tripData)
+    if (agent.pendingRequests.length !== 0) {
+      let userTrips = agent.pendingRequests;
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-        $('.pending-trip-cards').append(`
+        $('.agent-aside').append(`
         <div class="trip-card">
           <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
           <h5>${foundDestination.destination}</h5>
