@@ -21,7 +21,7 @@ class Trip {
     return lodgingTotal + flightTotal + agencyFee
   }
 
-  bookTrip(trip) {
+  submitRequest(trip) {
     fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
       method: 'POST',
       headers: {

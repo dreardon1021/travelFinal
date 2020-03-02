@@ -7,6 +7,7 @@ var moment = require('moment');
 import './css/base.scss';
 import './images/beach.jpg';
 import './images/airplane.png';
+import './images/magnifying-glass.png';
 
 
 function fetchData() {
@@ -68,7 +69,8 @@ function loginUser() {
   let userInput = $('#user-name').val();
   let passwordInput = $('#password').val();
   if (userInput === 'agency' && passwordInput === 'travel2020') {
-    domUpdates.hide('.login-form');
+    domUpdates.hide('.login-page');
+    domUpdates.displayAgent('.agent-dashboard')
     populateAgentDash()
   } else if (arrayOfFifty.includes(userInput) &&
     passwordInput === 'travel2020') {
@@ -109,7 +111,7 @@ function bookTrip() {
     e.preventDefault();
   })
   trip = new Trip(Date.now(), traveler.id, getDestinationID(destinationData), parseInt($('.traveler').val()), moment($('.start-date').val()).format('YYYY/MM/DD'), parseInt($('.duration').val()))
-  trip.bookTrip(trip);
+  trip.submitRequest(trip);
   setTimeout(() => {
     domUpdates.removeElement('#request-message')
     domUpdates.populateNewTrip(destinationData, trip)

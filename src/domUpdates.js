@@ -12,6 +12,11 @@ const domUpdates = {
     $(target).addClass('travelerFlex');
   },
 
+  displayAgent: (target) => {
+    $(target).css('display', 'flex');
+    $(target).addClass('agentFlex');
+  },
+
   populateDestinationDropDown: (destination) => {
     $('#select-destination').append(`<option value="${destination.destination}">${destination.destination}</option>`)
   },
