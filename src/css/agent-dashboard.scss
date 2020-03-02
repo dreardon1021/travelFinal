@@ -88,16 +88,13 @@
    }
 }
 
-.trip-card-pending-agent {
-    @include flex(column, center, center);
-    width: 16em;
-    height: 12em;
-    border: 1px solid black;
-    margin-top: 1em;
-}
-
 .found-user-info {
-  width: fit-content;
+  @include flex(row, space-around, center);
+  display: none;
+  border: 1px solid black;
+  background-color: rgba(255, 255, 255, 0.5);
+  width: 70%;
   height: fit-content;
+  margin-top: 1em;
 }
 

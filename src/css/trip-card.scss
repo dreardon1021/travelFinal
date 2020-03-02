@@ -29,3 +29,25 @@ ul {
   width: 6em;
   height: 4em;
 }
+
+.trip-card-pending-agent {
+  @include flex(column, center, center);
+  width: 16em;
+  height: 12em;
+  border: 1px solid black;
+  margin-top: 1em;
+}
+
+.agent-trip-card {
+  @include flex(column, center, center);
+    width: 15em;
+    height: 9.5em;
+    border: 1px solid black;
+    margin-left: 1em;
+    font-size: .9em;
+
+    img {
+      width: 5em;
+      height: 3em;
+    }
+}
