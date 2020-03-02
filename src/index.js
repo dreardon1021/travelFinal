@@ -56,7 +56,7 @@ $('.get-estimate-button').click(getTripEstimate)
 $('.start-date').change(enableButtons)
 $('.duration').change(enableButtons)
 $('.traveler').change(enableButtons)
-$('.search-button').click(searchAndPopulateUser)
+$('.search-button').click(searchUserFunctions)
 
 
 
@@ -108,7 +108,7 @@ function extractUserId(userInput) {
 }
 
 //helper function for traveler population
-// function populateTraveler()
+
 
 //Booktrip, instantiate new trip, call from trip and domUpdates
 function bookTrip() {
@@ -161,7 +161,15 @@ function populateAgentDash() {
   })
 }
 
-function searchAndPopulateUser() {
+//agent search functions
+function searchUserFunctions() {
+  traveler = new Traveler(searchUser())
+  domUpdates.populateFoundUserInfo(traveler, tripData, destinationData)
+  domUpdates.removeElement('.please-search-message')
+  domUpdates.populateFoundUserCurrentTrip(traveler, tripData, destinationData)
+}
+
+function searchUser() {
   if (userData.find(user => user.id === parseInt($('.search-input').val()))) {
     return userData.find(user => user.id === parseInt($('.search-input').val()))
   } else if (userData.find(user => user.name.toLowerCase() === $('.search-input').val().toLowerCase())) {

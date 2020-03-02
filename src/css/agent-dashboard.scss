@@ -90,9 +90,14 @@
 
 .trip-card-pending-agent {
     @include flex(column, center, center);
-    width: 15em;
+    width: 16em;
     height: 12em;
     border: 1px solid black;
     margin-top: 1em;
+}
+
+.found-user-info {
+  width: fit-content;
+  height: fit-content;
 }
 

@@ -120,6 +120,7 @@ const domUpdates = {
     $(elementId).remove()
   },
 
+  //Start of agent dashboard functions
   populateRequestsForAgent: (traveler, tripData, destinationData) => {
     traveler.findPendingRequests(traveler.id, tripData)
     if (traveler.pendingRequests.length !== 0) {
@@ -154,6 +155,30 @@ const domUpdates = {
   populateCurrentTravelers: (agent, userData, tripData) => {
     $('.display-username').text(`There are ${agent.calculateNumOfCurrentTravelers(userData, tripData)} travelers today`)
   },
+
+  populateFoundUserInfo: (traveler, tripData, destinationData) => {
+    $('.found-user-name').text(traveler.name);
+    $('.found-user-spent').text(traveler.calculateUserSpent(traveler.id, tripData, destinationData))
+  },
+
+  populateFoundUserCurrentTrip: (traveler, tripData, destinationData) => {
+    if (traveler.findCurrentTrips(traveler.id, tripData) !== undefined) {
+      let currentTrip = traveler.findCurrentTrips(traveler.id, tripData)
+      let foundDestination = destinationData.find(destination => destination.id === currentTrip.destinationID)
+      $('.current-trip-cards').append(`
+      <div class="trip-card">
+        <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+        <h5>${foundDestination.destination}</h5>
+        <div class="card-data">
+          <ul>
+            <li><strong>Travelers:</strong> ${currentTrip.travelers}</li>
+            <li><strong>Start Date:</strong> ${currentTrip.date}</li>
+            <li><strong>Duration:</strong> ${currentTrip.duration}</li>
+          </ul>
+        </div>
+      </div>`)
+    }
+  }
 }
 
 export default domUpdates;
