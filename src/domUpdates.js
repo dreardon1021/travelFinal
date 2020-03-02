@@ -128,7 +128,7 @@ const domUpdates = {
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
         $('.agent-aside').append(`
-        <div class="${trip.id} trip-card-pending-agent">
+        <div id="${trip.id}" class="trip-card-pending-agent">
           <div class="card-header">
             <button class="approve">Approve</button>
             <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
@@ -181,9 +181,46 @@ const domUpdates = {
     }
   },
 
-  populateFoundUserUpcomingTrips: () => {
-    
+  populateFoundUserUpcomingTrips: (traveler, tripData, destinationData) => {
+    let userTrips = traveler.findUserUpcomingTrips(traveler.id, tripData)
+    userTrips.forEach(trip => {
+      if (trip.status === 'approved') {
+        let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+        $('.upcoming-trip-cards').append(`
+          <div class="agent-trip-card">
+            <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+            <h5>${foundDestination.destination}</h5>
+            <div class="card-data">
+              <ul>
+                <li><strong>Travelers:</strong> ${trip.travelers}</li>
+                <li><strong>Start Date:</strong> ${trip.date}</li>
+                <li><strong>Duration:</strong> ${trip.duration}</li>
+              </ul>
+            </div>
+          </div>`)
+      }
+    })
+  },
+
+  populateFoundUserPastTrips: (traveler, tripData, destinationData) => {
+    let userTrips = traveler.findUserPastTrips(traveler.id, tripData)
+    userTrips.forEach(trip => {
+      let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
+      $('.past-trip-cards').append(`
+        <div class="agent-trip-card">
+          <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
+          <h5>${foundDestination.destination}</h5>
+          <div class="card-data">
+            <ul>
+              <li><strong>Travelers:</strong> ${trip.travelers}</li>
+              <li><strong>Start Date:</strong> ${trip.date}</li>
+              <li><strong>Duration:</strong> ${trip.duration}</li>
+            </ul>
+          </div>
+        </div>`)
+    })
   }
 }
+
 
 export default domUpdates;

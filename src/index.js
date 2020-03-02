@@ -168,6 +168,8 @@ function searchUserFunctions() {
   domUpdates.removeElement('.please-search-message');
   domUpdates.removeElement('.agent-trip-card');
   domUpdates.populateFoundUserCurrentTrip(traveler, tripData, destinationData)
+  domUpdates.populateFoundUserUpcomingTrips(traveler, tripData, destinationData)
+  domUpdates.populateFoundUserPastTrips(traveler, tripData, destinationData)
 }
 
 function searchUser() {
