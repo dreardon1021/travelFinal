@@ -27,13 +27,15 @@ class Agent extends User {
 
   approveRequest(tripId) {
     let approvedTrip = {"id": parseInt(tripId), "status": "approved"}
-    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(approvedTrip),
-    })
+
+    return window
+      .fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(approvedTrip),
+      })
       .then(response => response.json())
       .then(response => console.log(response))
       .catch(error => console.log(error.message))
