@@ -3,6 +3,11 @@
   display: none;
   width: 100%;
   height: 100%;
+
+  @media (max-width: 480px) {
+    @include flex(column, space-between, center);
+    display: none;
+  }
 }
 
 .agent-aside {
@@ -14,6 +19,22 @@
   right: 1.2em;
   overflow-y: scroll;
 
+  @media (max-width: 480px) {
+    width: 100%;
+    height: 40%;
+    right: 0;
+    @include flex(column, space-between, center);
+    overflow-x: scroll;
+  }
+
+  .pending-requests-agent{
+    margin-left: 1.4em;
+
+    @media (max-width: 480px) {
+      @include flex(row, space-between, center)
+    }
+  }
+
   .trip-card {
     margin-top: .5em;
 
@@ -24,7 +45,11 @@
 }
 
 .agentFlex {
-  @include flex(row, space-around, center)
+  @include flex(row, space-around, center);
+
+  @media (max-width: 480px) {
+    @include flex(column, space-around, center)
+  }
 }
 
 .agent-data-section {
@@ -32,25 +57,43 @@
   width: 70%;
   height: 100%;
   margin-right: 4em;
+
+  @media (max-width: 480px) {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .search-area {
   @include flex(row, null, center);
   border-radius: .4em;
-  width: fit-content;
+  width: 80%;
   height: fit-content;
   background-color: rgba(255, 255, 255, 0.5);
   margin-top: 1em;
 
+  @media (max-width: 480px) {
+    height: 2.5em;
+  }
+
   input {
     border-radius: .4em;
-    width: 45em;
+    width: 100%;
+
+    @media (max-width: 480px) {
+      height: 2.5em;
+    }
   }
 
   button{
     border-radius: 1em;
-    width: 3.75em;
-    height: 3.75em;
+    width: 3.5em;
+    height: 3.5em;
+
+    @media (max-width: 480px) {
+      height: 2.5em;
+      width: 2.5em;
+    }
 
     img{
       @extend button
@@ -96,5 +139,10 @@
   width: 70%;
   height: fit-content;
   margin-top: 1em;
+
+  @media (max-width: 480px) {
+    width: 95%;
+    height: .9em;
+  }
 }
 

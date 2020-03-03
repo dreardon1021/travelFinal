@@ -129,9 +129,9 @@ const domUpdates = {
       let userTrips = traveler.pendingRequests;
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-        $('.agent-aside').append(`
-        <div id="${trip.id}" class="trip-card-pending-agent">
-          <div class="card-header">
+        $('.pending-requests-agent').append(`
+        <div class="trip-card-pending-agent">
+          <div id="${trip.id}" class="card-header">
             <button class="approve">Approve</button>
             <img src=${foundDestination.image} class="card-background" alt="${foundDestination.destination}" />
             <button class="deny">Deny</button>

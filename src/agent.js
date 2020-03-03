@@ -24,6 +24,35 @@ class Agent extends User {
     })
     return total;
   }
+
+  approveRequest(tripId) {
+    let approvedTrip = {"id": parseInt(tripId), "status": "approved"}
+    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/updateTrip', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(approvedTrip),
+    })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error.message))
+  }
+
+  denyRequest(tripId) {
+    let deniedTrip = {"id": parseInt(tripId)}
+    fetch('https://fe-apps.herokuapp.com/api/v1/travel-tracker/1911/trips/trips', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(deniedTrip),
+    })
+      .then(response => response.json())
+      .then(response => console.log(response))
+      .catch(error => console.log(error.message))
+  }
 }
+
 
 export default Agent;
