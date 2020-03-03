@@ -5,11 +5,11 @@ The final solo project of module 2 at Turing, We were told to create a website f
 
 
 ## Sceen Shots
-![login] (https://user-images.githubusercontent.com/56371796/75816510-97944700-5d52-11ea-91cb-c4deca6ded84.png)
+![login](https://user-images.githubusercontent.com/56371796/75816510-97944700-5d52-11ea-91cb-c4deca6ded84.png)
 
-![agent] (https://user-images.githubusercontent.com/56371796/75816524-9cf19180-5d52-11ea-94f5-e2a57f7ac1dd.png)
+![agent](https://user-images.githubusercontent.com/56371796/75816524-9cf19180-5d52-11ea-94f5-e2a57f7ac1dd.png)
 
-![traveler] (https://user-images.githubusercontent.com/56371796/75816518-9b27ce00-5d52-11ea-8243-e57a37e4099e.png)
+![traveler](https://user-images.githubusercontent.com/56371796/75816518-9b27ce00-5d52-11ea-8243-e57a37e4099e.png)
 
 
 ### Install instructions
