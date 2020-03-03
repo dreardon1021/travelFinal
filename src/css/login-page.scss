@@ -1,13 +1,17 @@
 .login-page {
   @include flex(row, center, center);
   align-content: center;
-  // display: none;
 }
 
 .login-left {
   @include flex(column, null, center);
   width: 45%;
   height: 20em;
+
+  @media (max-width: 480px) {
+    width: 70%;
+    height: 70%;
+  }
 }
 
 .login-form {
@@ -75,4 +79,14 @@ label {
   position: relative;
   left: 2.9em;
   align-self: flex-start;
+
+  @media (max-width: 480px) {
+    left: 32%;
+  }
+}
+
+.login-header {
+  @media (max-width: 480px) {
+    display: none;
+  }
 }

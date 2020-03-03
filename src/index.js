@@ -54,7 +54,7 @@ $('.login-button').click(loginUser);
 $('.book-trip-button').click(bookTrip);
 $('.get-estimate-button').click(getTripEstimate);
 $('.search-button').click(searchUserFunctions);
-$('.agent-aside').click(approveRequest);
+$('.agent-aside').click(approveOrDenyRequest);
 $('.start-date').change(enableButtons);
 $('.duration').change(enableButtons);
 $('.traveler').change(enableButtons);
@@ -105,9 +105,6 @@ function extractUserId(userInput) {
     return userData.find(user => user.id === parseInt(id));
   }
 }
-
-//helper function for traveler population
-
 
 //Booktrip, instantiate new trip, call from trip and domUpdates
 function bookTrip() {
@@ -179,11 +176,28 @@ function searchUser() {
   }
 }
 
+//Approve or Deny Handeler
+function approveOrDenyRequest(event) {
+  approveRequest(event);
+  denyRequest(event);
+}
+
+//Approve and Deny
 function approveRequest(event) {
   if ($(event.target).hasClass('approve')) {
     agent = new Agent();
     let tripId = $(event.target).parent().attr('id')
     agent.approveRequest(tripId)
+    let cardToRemove = $(`#${tripId}`).parent()
+    domUpdates.removeElement(cardToRemove)
+  }
+}
+
+function denyRequest(event) {
+  if ($(event.target).hasClass('deny')) {
+    agent = new Agent();
+    let tripId = $(event.target).parent().attr('id')
+    agent.denyRequest(tripId)
     let cardToRemove = $(`#${tripId}`).parent()
     domUpdates.removeElement(cardToRemove)
   }

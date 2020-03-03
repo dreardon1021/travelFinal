@@ -129,7 +129,7 @@ const domUpdates = {
       let userTrips = traveler.pendingRequests;
       userTrips.forEach(trip => {
         let foundDestination = destinationData.find(destination => destination.id === trip.destinationID)
-        $('.agent-aside').append(`
+        $('.pending-requests-agent').append(`
         <div class="trip-card-pending-agent">
           <div id="${trip.id}" class="card-header">
             <button class="approve">Approve</button>
