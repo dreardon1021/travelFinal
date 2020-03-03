@@ -56,6 +56,7 @@ input {
   color: white;
   background-color: $nav-background;
   font-size: 1em;
+
   &:hover {
     color: $nav-background;
     background-color: rgb(255, 255, 255);
@@ -80,7 +81,7 @@ label {
   left: 2.9em;
   align-self: flex-start;
 
-  @media (max-width: 480px) {
+  @media (max-width: 800px) {
     left: 32%;
   }
 }
@@ -89,4 +90,5 @@ label {
   @media (max-width: 480px) {
     display: none;
   }
+  
 }
